@@ -157,6 +157,8 @@
       await loadComponent(item.selector, item.file);
     }
 
+    document.dispatchEvent(new CustomEvent("portfolio:components-loaded"));
+
     initSmoothAnchors();
     initActiveNav();
     initContactForm();
