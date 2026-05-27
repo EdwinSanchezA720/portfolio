@@ -1,0 +1,208 @@
+/*
+  styles.css — design tokens, typography, global layout, Bootstrap theme overrides.
+  Section-specific visuals live in components.css.
+*/
+
+:root {
+  /* Palette (dark, tech-focused) */
+  --bg-deep-slate: #0D1B2A;
+  --surface-navy: #1e293b;
+  --accent-indigo: #9A8C98;
+  --accent-cyan: #38bdf8;
+  --text-primary: #22223B;
+  --text-muted: #22223B;
+  --border-subtle: rgba(148, 163, 184, 0.22);
+
+  --radius-card: 12px;
+  --nav-height: 4.5rem;
+
+  --shadow-soft: 0 12px 40px rgba(15, 23, 42, 0.45);
+  --shadow-glow-indigo: 0 0 0 1px rgba(99, 102, 241, 0.35), 0 18px 60px rgba(99, 102, 241, 0.22);
+  --shadow-glow-hover: 0 0 0 1px rgba(56, 189, 248, 0.35), 0 22px 70px rgba(99, 102, 241, 0.35);
+
+  --font-sans: "Roboto mono", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* Bootstrap variable hooks (keeps utilities coherent with our palette) */
+[data-bs-theme="dark"] {
+  --bs-body-bg: var(--bg-deep-slate);
+  --bs-body-color: var(--text-primary);
+  --bs-secondary-color: var(--text-muted);
+  --bs-border-color: var(--border-subtle);
+  --bs-emphasis-color: var(--text-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 0.75rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body.site-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings: Inter, bold, tight tracking */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.letter-spacing-tight {
+  letter-spacing: -0.03em;
+}
+
+.text-accent-cyan {
+  color: var(--accent-cyan) !important;
+}
+
+.text-accent-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-indigo), var(--accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Tech stack badges */
+.badge-tech {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background: #22223B;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+}
+
+/* Buttons: gradient + glow on hover (override Bootstrap primary) */
+.btn-primary {
+  --bs-btn-color: var(--text-primary);
+  --bs-btn-bg: var(--accent-indigo);
+  --bs-btn-border-color: rgba(99, 102, 241, 0.55);
+  --bs-btn-hover-bg: #4f46e5;
+  --bs-btn-hover-border-color: rgba(56, 189, 248, 0.45);
+  --bs-btn-active-bg: #4338ca;
+  --bs-btn-active-border-color: rgba(56, 189, 248, 0.55);
+  --bs-btn-disabled-bg: rgba(99, 102, 241, 0.35);
+  --bs-btn-disabled-border-color: rgba(99, 102, 241, 0.2);
+  background-image: linear-gradient(135deg, rgba(99, 102, 241, 1), rgba(56, 189, 248, 0.55));
+  background-size: 200% 200%;
+  border-radius: var(--radius-card) !important;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.18);
+  transition: transform 160ms ease, box-shadow 200ms ease, background-position 240ms ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow-hover);
+  background-position: 100% 0;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-outline-light {
+  border-radius: var(--radius-card) !important;
+}
+
+/* Cards */
+.card {
+  border-radius: var(--radius-card) !important;
+  background-color: var(--surface-navy);
+  color: var(--text-primary);
+}
+
+.form-control,
+.form-check-input {
+  border-radius: var(--radius-card);
+}
+
+.form-control {
+  background-color: rgba(15, 23, 42, 0.55);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.form-control:focus {
+  border-color: rgba(99, 102, 241, 0.65);
+  box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.2);
+  background-color: rgba(15, 23, 42, 0.75);
+  color: var(--text-primary);
+}
+
+.form-check-input:checked {
+  background-color: var(--accent-indigo);
+  border-color: var(--accent-indigo);
+}
+
+.site-footer {
+  background: rgba(15, 23, 42, 0.65);
+}
+
+/* Scroll reveal base (visibility controlled in components.css / motion query) */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 650ms ease, transform 650ms ease;
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+
+  .btn-primary {
+    transition: none;
+    background-size: auto;
+  }
+
+  .btn-primary:hover {
+    transform: none;
+  }
+}
+
+.skill-icon {
+  font-size: 3.5rem;
+}

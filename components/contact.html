@@ -1,0 +1,69 @@
+<section id="contact" class="section">
+  <div class="container">
+    <div class="row g-4 g-lg-5 align-items-start">
+      <div class="col-lg-5 reveal">
+        <header class="section-header text-center text-lg-start mb-0">
+          <h2 class="h1 fw-bold text-white letter-spacing-tight mx-auto mx-lg-0">¿Tienes un proyecto?</h2>
+          <p class="text-muted lead mx-auto mx-lg-0">
+
+            Si buscas una persona
+
+
+
+            <!-- BOTONES -->
+          <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+            <a href="./docs/EdwinSánchez_CV_DJFS.pdf" class="btn btn-dark-primary col-5 col-lg-auto" target="_blank">
+              <i class="bi bi-download"></i>
+              CV
+            </a>
+
+            <a href="mailto:edwin.sanchez.aglr@gmail.com" class="btn btn-dark-primary col-5 col-lg-auto" target="_blank">
+            <i class="bi bi-envelope"></i>
+              Email
+            </a>
+            
+            <a href="https://github.com/EdwinSanchezA720" class="btn btn-dark-primary col-5 col-lg-auto" target="_blank">
+              <i class="devicon-github-original"></i>
+              GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/edwine-s%C3%A1ncheza/" class="btn btn-dark-primary col-5 col-lg-auto" target="_blank">
+              <i class="devicon-linkedin-plain"></i>
+              LinkedIn
+            </a>
+
+          </div>
+          </p>
+        </header>
+      </div>
+      <div class="col-lg-7 reveal">
+        <form id="contact-form" class="contact-form p-4 p-md-5 rounded-4 border border-secondary border-opacity-25 needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="contact-name" class="form-label text-white">Nombre</label>
+              <input type="text" class="form-control form-control-lg rounded-3" id="contact-name" name="name" required minlength="2" autocomplete="name" placeholder="Tu nombre" />
+              <div class="invalid-feedback">Please enter your name (at least 2 characters).</div>
+            </div>
+            <div class="col-md-6">
+              <label for="contact-email" class="form-label text-white">Correo electrónico</label>
+              <input type="email" class="form-control form-control-lg rounded-3" id="contact-email" name="email" required autocomplete="email" placeholder="tu@correo.com" />
+              <div class="invalid-feedback">Please enter a valid email address.</div>
+            </div>
+            <div class="col-12">
+              <label for="contact-message" class="form-label text-white">Cuéntame tu proyecto</label>
+              <textarea class="form-control rounded-3" id="contact-message" name="message" rows="5" required minlength="10" placeholder="¿Que quieres construir?"></textarea>
+              <div class="invalid-feedback">Please enter a message (at least 10 characters).</div>
+            </div>
+            <div class="col-12">
+              
+            </div>
+            <div class="col-12 d-flex flex-wrap gap-3 align-items-center">
+              <button type="submit" class="btn btn-primary btn-lg px-4">Enviar</button>
+              <p id="contact-form-status" class="small text-muted mb-0 d-none" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
