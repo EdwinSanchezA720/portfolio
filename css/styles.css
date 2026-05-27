@@ -11,6 +11,7 @@
   --accent-cyan: #38bdf8;
   --text-primary: #22223B;
   --text-muted: #22223B;
+  --text-description: white;
   --border-subtle: rgba(148, 163, 184, 0.22);
 
   --radius-card: 12px;
