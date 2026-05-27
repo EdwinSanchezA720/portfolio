@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+ 
+on:
+  push:
+    branches:
+      - gh_pages  # Se activa solo cuando hay cambios en esta rama
+ 
+  # Permite ejecutar el workflow manualmente desde la pestaña Actions
+  workflow_dispatch:
+ 
+# Permisos necesarios para publicar en GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+ 
+# Evita despliegues simultáneos
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+ 
+jobs:
+  deploy:
+    name: Deploy Site
+    runs-on: ubuntu-latest
+ 
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+ 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: gh_pages  # Asegura que se use la rama correcta
+ 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+ 
+      - name: Upload site files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Sube todo el contenido del repositorio (raíz del proyecto)
+          path: "."
+ 
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
