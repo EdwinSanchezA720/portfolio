@@ -413,6 +413,12 @@
 }
 
 /* Project card — image preview */
+.project-card-preview {
+  overflow: hidden;
+  border-top-left-radius: calc(var(--radius-card) - 1px);
+  border-top-right-radius: calc(var(--radius-card) - 1px);
+}
+
 .project-card-preview img {
   width: 100%;
   height: auto;
